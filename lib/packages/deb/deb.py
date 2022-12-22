@@ -7,7 +7,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.
 
 import errno
 
-from patterns import *
+from .patterns import *
 from package import Package
 
 
@@ -68,7 +68,7 @@ class DebSupport(Package):
         with open(path, 'wt') as f:
             f.write(content)
 
-        os.chmod(path, 0555) # read/execute
+        os.chmod(path, 0o555) # read/execute
 
         log.info("%s was created" % path)
 

@@ -1,5 +1,5 @@
-from seealso_patterns import *
-from patterns import MAN_GROUP
+from .seealso_patterns import *
+from .patterns import MAN_GROUP
 
 
 class Generate(object):
@@ -47,7 +47,7 @@ class Finder(object):
         if len(self.list) <= 1:
             return
 
-        list = sorted(set(self.list))
+        list = set(self.list)
 
         return [entry.unique_name for entry in list if entry.unique_name != self.entry.unique_name]
 

@@ -2,9 +2,9 @@ import logging
 log = logging.getLogger('main')
 
 
-from guide.loader import load as load_guide
-from uops.loader import load as load_uops
-from uops import architecture_name, normalize
+from .guide.loader import load as load_guide
+from .uops.loader import load as load_uops
+from .uops import architecture_name, normalize
 
 
 class DataSource(object):
@@ -45,10 +45,10 @@ class DataSource(object):
             path = opts.uops_xml
             log.info("Loading architecture details from %s", path)
             if opts.enabled_architectures:
-                tmp = map(architecture_name, opts.enabled_architectures)
+                tmp = list(map(architecture_name, opts.enabled_architectures))
                 log.info("- will include only architecture(s): %s", fmtset(tmp))
             if opts.disabled_architectures:
-                tmp = map(architecture_name, opts.disabled_architectures)
+                tmp = list(map(architecture_name, opts.disabled_architectures))
                 log.info("- will exclude architecture(s): %s", fmtset(tmp))
 
             self.architecture = load_uops(path)

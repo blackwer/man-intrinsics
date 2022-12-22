@@ -4,8 +4,8 @@ import logging
 
 log = logging.getLogger('main')
 
-from model import *
-from db import *
+from .model import *
+from .db import *
 
 def load(path):
     log.debug("Loading data from '%s'...", path)
@@ -152,7 +152,7 @@ def parse_ports(tag):
 
         l.append(d)
 
-    for attr, value in tag.attrib.iteritems():
+    for attr, value in tag.attrib.items():
         if not attr.startswith('port'):
             continue
 

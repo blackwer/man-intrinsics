@@ -1,4 +1,4 @@
-from patterns import *
+from .patterns import *
 from os.path import join
 from os.path import exists
 from os.path import islink
@@ -10,7 +10,7 @@ import gzip
 import logging
 log = logging.getLogger('main')
 
-from generator_base import GeneratorBase
+from .generator_base import GeneratorBase
 
 
 class Generator(GeneratorBase):
@@ -43,7 +43,7 @@ class Generator(GeneratorBase):
 
             text = self.generate_man_page(entry)
             with open_file(path) as f:
-                f.write(unicode(text).encode('utf8'))
+                f.write(str(text))
                 self.created_files.append(path)
 
 
@@ -102,7 +102,7 @@ class Generator(GeneratorBase):
 
 
     def generate_links(self):
-        for instruction, entries in self.by_instruction.iteritems():
+        for instruction, entries in self.by_instruction.items():
             target = self.get_linkpath(instruction)
             source = self.get_filename(entries[0])
             if exists(target):

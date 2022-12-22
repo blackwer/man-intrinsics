@@ -1,4 +1,4 @@
-from uops_patterns import *
+from .uops_patterns import *
 
 class Generate(object):
     def __init__(self, options, datasource):
@@ -28,7 +28,7 @@ class Generate(object):
         for instruction in arch_details:
             res += self.TABLE_START
             res += self.TABLE_HEADER % instruction.form
-            for arch, measurements in instruction.measurements.iteritems():
+            for arch, measurements in instruction.measurements.items():
                 if not self.datasource.filter_by_arch(arch):
                     continue
 
