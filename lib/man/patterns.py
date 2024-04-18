@@ -4,14 +4,14 @@ MAIN=R""".\" auto-generated file
 .TH %(technology)s %(group)s %(date)s "Version %(version)s" "The list of x86 intrinsics"
 
 .SH NAME
+%(name)s \- %(description)s
+.SH SYNOPSIS
+
 .EX
 #include <%(include)s>
 
 %(rettype)s \fB%(name)s\fP(%(arguments)s);
 .EE
-
-.SH DESCRIPTION
-%(description)s
 """
 
 NO_INSTRUCTION_NOTE=R""".PP
